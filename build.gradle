@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'java-library' // SHADOW
+    id "com.github.johnrengelman.shadow" version "7.1.2" // SHADOW
+}
+
+group 'com.github.nicks.region'
+version '1.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        url = "http://idkNicks.xyz:8081/repository/maven-public/"
+        allowInsecureProtocol = true
+    }
+}
+
+dependencies {
+
+    // NickLib
+    api 'com.github.nicks:nicklib:2.5'
+
+    // Anotations
+    implementation 'org.jetbrains:annotations:23.0.0'
+
+
+    // SPIGOT API
+    compileOnly "org.bukkit.spigotmc:spigot-api:1.19.2-R0.1"
+
+
+    // FILE Dependencies
+    compileOnly fileTree(dir: 'api', include: ['*.jar'])
+    api fileTree(dir: 'api/shadows', include: ['*.jar'])
+}
+
+jar {
+    finalizedBy shadowJar
+}
+
+task copyJar(type: Copy) {
+    from "\\build\\libs\\NK-Region-1.0-all.jar"
+    into "C:\\Users\\Yangd\\대영\\마인크래프트\\서버\\마인크래프트\\개발용\\1.19.2\\plugins"
+}
+
+build.dependsOn copyJar
