@@ -18,7 +18,7 @@ repositories {
 dependencies {
 
     // NickLib
-    api 'com.github.nicks:nicklib:2.7'
+    api 'com.github.nicks:nicklib:3.2'
 
     // Anotations
     implementation 'org.jetbrains:annotations:23.0.0'

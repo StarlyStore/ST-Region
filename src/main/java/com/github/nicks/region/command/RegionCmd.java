@@ -46,6 +46,11 @@ public class RegionCmd implements CommandExecutor {
                     }
                 }
 
+                case "테스트" -> {
+                    regionObject.test();
+                    return true;
+                }
+
                 default -> {
                     player.sendMessage("§c사용법: /nkregion <생성/제거/목록>");
                     return true;
