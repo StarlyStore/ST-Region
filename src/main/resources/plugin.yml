@@ -1,0 +1,7 @@
+name: NK-Region
+main: com.github.nicks.region.Region
+author: idkNicks
+description: Region Manager API
+
+version: 1.0.0
+api-version: 1.13
