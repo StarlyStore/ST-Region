@@ -41,7 +41,7 @@ public class RegionCmd implements CommandExecutor {
 
                 }
 
-                case "삭제", "remove" -> {
+                case "제거", "remove" -> {
                     if (args.length == 2) {
                         if (RegionMapData.regionMap.containsKey(args[1])) {
                             RegionMapData.regionMap.remove(args[1]);

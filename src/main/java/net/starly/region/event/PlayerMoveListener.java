@@ -6,11 +6,15 @@ import net.starly.region.events.RegionEnterEvent;
 import net.starly.region.events.RegionLeaveEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class PlayerMoveListener implements Listener {
@@ -26,10 +30,12 @@ public class PlayerMoveListener implements Listener {
                 RegionMapData.regionMap.keySet().forEach(key -> {
                     Region region = RegionMapData.regionMap.get(key);
 
-                    if (!region.contains(from) && region.contains(to)) Bukkit.getPluginManager().callEvent(new RegionEnterEvent(p, region));
-                    if (region.contains(from) && !region.contains(to)) Bukkit.getPluginManager().callEvent(new RegionLeaveEvent(p, region));
+                    if (!region.contains(from) && region.contains(to)) Bukkit.getPluginManager().callEvent(new RegionEnterEvent(p, region, key));
+                    if (region.contains(from) && !region.contains(to)) Bukkit.getPluginManager().callEvent(new RegionLeaveEvent(p, region, key));
                 });
             }
         }.run();
     }
+
+
 }

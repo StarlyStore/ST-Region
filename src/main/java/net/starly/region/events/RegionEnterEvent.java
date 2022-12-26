@@ -10,10 +10,12 @@ public class RegionEnterEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
     private final Player player;
     private final Region region;
+    private final String name;
 
-    public RegionEnterEvent(Player player, Region region) {
+    public RegionEnterEvent(Player player, Region region, String name) {
         this.player = player;
         this.region = region;
+        this.name = name;
     }
 
     @NotNull
@@ -32,5 +34,9 @@ public class RegionEnterEvent extends Event {
 
     public Region getRegion() {
         return region;
+    }
+
+    public String getName() {
+        return name;
     }
 }

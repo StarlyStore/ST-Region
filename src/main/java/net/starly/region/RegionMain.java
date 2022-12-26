@@ -3,6 +3,7 @@ package net.starly.region;
 import net.starly.core.data.Config;
 import net.starly.core.data.location.Region;
 import net.starly.region.command.RegionCmd;
+import net.starly.region.command.RegionCmdTabComplete;
 import net.starly.region.data.RegionMapData;
 import net.starly.region.event.PlayerInteractListener;
 import net.starly.region.event.PlayerMoveListener;
@@ -36,6 +37,7 @@ public class RegionMain extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new PlayerMoveListener(), this);
 
         Bukkit.getPluginCommand("region").setExecutor(new RegionCmd());
+        Bukkit.getPluginCommand("region").setTabCompleter(new RegionCmdTabComplete());
     }
 
     @Override

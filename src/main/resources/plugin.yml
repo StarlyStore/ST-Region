@@ -11,3 +11,4 @@ softdepend:
 
 commands:
   region:
+    aliases: [ 구역 ]
