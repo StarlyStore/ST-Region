@@ -6,6 +6,8 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.List;
+
 public class RegionAPI {
     public RegionAPI(JavaPlugin plugin) {
         System.out.println("RegionAPI has been loaded by " + plugin.getName() + "!");
@@ -21,6 +23,10 @@ public class RegionAPI {
 
     public Region getRegion(String name) {
         return RegionMapData.regionMap.get(name);
+    }
+
+    public List<Region> getRegions() {
+        return (List<Region>) RegionMapData.regionMap.values();
     }
 
     public boolean contains(String name, Location location) {
