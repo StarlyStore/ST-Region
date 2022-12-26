@@ -6,16 +6,11 @@ import net.starly.region.events.RegionEnterEvent;
 import net.starly.region.events.RegionLeaveEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.scheduler.BukkitRunnable;
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class PlayerMoveListener implements Listener {
     @EventHandler
@@ -36,6 +31,4 @@ public class PlayerMoveListener implements Listener {
             }
         }.run();
     }
-
-
 }

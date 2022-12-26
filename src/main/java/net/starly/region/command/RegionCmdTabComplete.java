@@ -1,16 +1,13 @@
 package net.starly.region.command;
 
-import net.starly.core.data.location.Region;
 import net.starly.region.data.RegionMapData;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RegionCmdTabComplete implements TabCompleter {
     @Override
