@@ -1,10 +1,13 @@
-name: NK-Region
-main: com.github.nicks.region.Region
-author: idkNicks
-description: Region Manager API
+name: ST-Region
+main: net.starly.region.RegionMain
+author: Starly Team
+website: https://discord.gg/TF8jqSJjCG
 
-version: 1.0.0
-api-version: 1.13
+version: 1.0
+api-version: 1.16
+
+softdepend:
+  - ST-Core
 
 commands:
-  nkregion:
+  region:

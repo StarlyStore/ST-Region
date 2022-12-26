@@ -1,45 +1,31 @@
 plugins {
     id 'java'
-    id 'java-library' // SHADOW
-    id "com.github.johnrengelman.shadow" version "7.1.2" // SHADOW
 }
 
-group 'com.github.nicks.region'
+group 'net.starly.region'
 version '1.0'
 
 repositories {
     mavenCentral()
     maven {
-        url = "http://idkNicks.xyz:8081/repository/maven-public/"
+        url = "http://feather-s.kr:8083/repository/maven-public/"
         allowInsecureProtocol = true
     }
 }
 
 dependencies {
+    //JAVA DEPENDENCIES
+    compileOnly "org.jetbrains:annotations:23.0.0"
 
-    // NickLib
-    api 'com.github.nicks:nicklib:3.2'
+    //BUKKIT DEPENDENCIES
+    compileOnly "org.spigotmc:spigot-api:R0.1:1.16.5"
 
-    // Anotations
-    implementation 'org.jetbrains:annotations:23.0.0'
-
-
-    // SPIGOT API
-    compileOnly "org.bukkit.spigotmc:spigot-api:1.19.2-R0.1"
-
-
-    // FILE Dependencies
-    compileOnly fileTree(dir: 'api', include: ['*.jar'])
-    api fileTree(dir: 'api/shadows', include: ['*.jar'])
+    // OTHER DEPENDENCIES
+    compileOnly "net.starly.core:ST-Core:1.3.1"
 }
 
-jar {
-    finalizedBy shadowJar
-}
+compileJava.options.encoding = 'UTF-8'
 
-task copyJar(type: Copy) {
-    from "\\build\\libs\\NK-Region-1.0-all.jar"
-    into "C:\\Users\\Yangd\\대영\\마인크래프트\\서버\\마인크래프트\\개발용\\1.19.2\\plugins"
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
 }
-
-build.dependsOn copyJar
