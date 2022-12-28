@@ -49,5 +49,9 @@ public class RegionMain extends JavaPlugin {
             regionData.setLocation("pos1", region.getPos1());
             regionData.setLocation("pos2", region.getPos2());
         });
+
+        List.of(new File(this.getDataFolder(), "data").listFiles()).forEach(file -> {
+            if (!RegionMapData.regionMap.containsKey(file.getName().replace(".yml", ""))) file.delete();
+        });
     }
 }
