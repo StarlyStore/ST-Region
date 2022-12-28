@@ -26,7 +26,7 @@ public class RegionAPI {
     }
 
     public List<Region> getRegions() {
-        return (List<Region>) RegionMapData.regionMap.values();
+        return RegionMapData.regionMap.values().stream().toList();
     }
 
     public boolean contains(String name, Location location) {
