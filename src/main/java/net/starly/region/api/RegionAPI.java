@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -38,7 +39,19 @@ public class RegionAPI {
         regionMap.remove(name);
     }
     public boolean contains(@NotNull String name, @NotNull Location location) {
-        return regionMap.containsKey(name) && regionMap.get(name).contains(location);
+        return getRegion(name) != null && getRegion(name).contains(location);
+    }
+    public List<Player> getPlayersInRegion(@NotNull String name) {
+        return getPlayersInRegion(getRegion(name));
+    }
+    public List<Player> getPlayersInRegion(@NotNull Region region) {
+        List<Player> players = new ArrayList<>();
+
+        region.getPos1().getWorld().getPlayers().forEach(player -> {
+            if (region.contains(player.getLocation())) players.add(player);
+        });
+
+        return players;
     }
 
 
