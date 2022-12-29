@@ -11,7 +11,11 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 
+import static net.starly.region.RegionMain.prefix;
+
 public class PlayerInteractListener implements Listener {
+
+
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
         if (event.getClickedBlock() == null) return;
@@ -22,19 +26,20 @@ public class PlayerInteractListener implements Listener {
         if (player.isOp() && player.getItemInHand().getType() == Material.STONE_AXE) {
             if (event.getAction() == Action.LEFT_CLICK_BLOCK) {
                 if (!RegionMapData.pos2Map.containsKey(player)) {
+
                     RegionMapData.pos1Map.put(player, location);
-                    player.sendMessage("Pos1을 지정하였습니다. " + "(0)");
+                    player.sendMessage(prefix + "§f첫번째 구역을 지정하였습니다. " + "§7[" + location.getBlockX() + ", " + location.getBlockY() + ", " + location.getBlockZ() + "]" + " §7(§c0§7)");
                 } else {
                     RegionMapData.pos1Map.put(player, location);
-                    player.sendMessage("Pos1을 지정하였습니다. " + "(" + new Region(RegionMapData.pos1Map.get(player), RegionMapData.pos2Map.get(player)).getSize() + ")");
+                    player.sendMessage(prefix + "§f첫번째 구역을 지정하였습니다. " + "§7[" + location.getBlockX() + ", " + location.getBlockY() + ", " + location.getBlockZ() + "]" + " §7(§c" + new Region(RegionMapData.pos1Map.get(player), RegionMapData.pos2Map.get(player)).getSize() + "§7)");
                 }
             } else if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
                 if (!RegionMapData.pos1Map.containsKey(player)) {
                     RegionMapData.pos2Map.put(player, location);
-                    player.sendMessage("Pos2를 지정하였습니다. " + "(0)");
+                    player.sendMessage(prefix + "§f두번째 구역을 지정하였습니다. " + "§7[" + location.getBlockX() + ", " + location.getBlockY() + ", " + location.getBlockZ() + "]" + " §7(§c0§7)");
                 } else {
                     RegionMapData.pos2Map.put(player, location);
-                    player.sendMessage("Pos2를 지정하였습니다. " + "(" + new Region(RegionMapData.pos1Map.get(player), RegionMapData.pos2Map.get(player)).getSize() + ")");
+                    player.sendMessage(prefix + "§f두번째 구역을 지정하였습니다. " + "§7[" + location.getBlockX() + ", " + location.getBlockY() + ", " + location.getBlockZ() + "]" + " §7(§c" + new Region(RegionMapData.pos1Map.get(player), RegionMapData.pos2Map.get(player)).getSize() + "§7)");
                 }
             } else return;
 
