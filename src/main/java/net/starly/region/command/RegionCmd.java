@@ -8,6 +8,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import static net.starly.region.RegionMain.prefix;
+
 public class RegionCmd implements CommandExecutor {
 
 
@@ -20,23 +22,23 @@ public class RegionCmd implements CommandExecutor {
             case "생성", "create" -> {
                 if (args.length == 2) {
                     if (!RegionMapData.pos1Map.containsKey(player) || !RegionMapData.pos2Map.containsKey(player)) {
-                        player.sendMessage("§c좌표를 선택해주세요.");
+                        player.sendMessage(prefix + "§c좌표를 선택해주세요.");
 
                         return true;
                     }
 
                     if (!RegionMapData.regionMap.containsKey(args[1])) {
                         RegionMapData.regionMap.put(args[1], new Region(RegionMapData.pos1Map.get(player), RegionMapData.pos2Map.get(player)));
-                        player.sendMessage("§a성공적으로 §f" + args[1] + " §a이름의 구역을 생성했습니다.");
+                        player.sendMessage(prefix + "§a성공적으로 §f" + args[1] + " §a이름의 구역을 생성했습니다.");
 
                         return true;
                     }
                     else
-                        player.sendMessage("§c이미 존재하는 구역 이름입니다.");
+                        player.sendMessage(prefix + "§c이미 존재하는 구역 이름입니다.");
 
                     return true;
                 } else {
-                    player.sendMessage("§c사용법: /region 생성 <이름>");
+                    player.sendMessage(prefix + "§c사용법: /region 생성 <이름>");
 
                     return true;
                 }
@@ -47,16 +49,16 @@ public class RegionCmd implements CommandExecutor {
                 if (args.length == 2) {
                     if (RegionMapData.regionMap.containsKey(args[1])) {
                         RegionMapData.regionMap.remove(args[1]);
-                        player.sendMessage("§a성공적으로 구역을 제거했습니다.");
+                        player.sendMessage(prefix + "§a성공적으로 구역을 제거했습니다.");
 
                         return true;
                     } else {
-                        player.sendMessage("§c존재하지 않는 구역 이름입니다.");
+                        player.sendMessage(prefix + "§c존재하지 않는 구역 이름입니다.");
 
                         return true;
                     }
                 } else {
-                    player.sendMessage("§c사용법: /region 제거 <이름>");
+                    player.sendMessage(prefix + "§c사용법: /region 제거 <이름>");
                     return true;
                 }
             }
@@ -70,18 +72,18 @@ public class RegionCmd implements CommandExecutor {
                                 .append(", ");
                     }
 
-                    player.sendMessage("§a구역 목록: " + sb);
+                    player.sendMessage(prefix + "§a구역 목록: " + sb);
 
                     return true;
                 } else {
-                    player.sendMessage("§c사용법: /region 목록");
+                    player.sendMessage(prefix + "§c사용법: /region 목록");
 
                     return true;
                 }
             }
 
             default -> {
-                player.sendMessage("§c사용법: /region <생성|제거|목록>");
+                player.sendMessage(prefix + "§c사용법: /region <생성|제거|목록>");
                 return true;
             }
         }

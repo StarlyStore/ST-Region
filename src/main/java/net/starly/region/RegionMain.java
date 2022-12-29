@@ -1,6 +1,7 @@
 package net.starly.region;
 
 import net.starly.core.data.Config;
+import net.starly.core.data.MessageConfig;
 import net.starly.core.data.location.Region;
 import net.starly.region.command.RegionCmd;
 import net.starly.region.command.RegionCmdTabComplete;
@@ -15,6 +16,8 @@ import java.io.File;
 import java.util.List;
 
 public class RegionMain extends JavaPlugin {
+
+    public static String prefix = "§6[구역] ";
     @Override
     public void onEnable() {
         if (Bukkit.getPluginManager().getPlugin("ST-Core") == null) {

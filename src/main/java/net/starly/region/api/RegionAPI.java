@@ -15,7 +15,6 @@ import static net.starly.region.data.RegionMapData.regionMap;
 
 public class RegionAPI {
     public RegionAPI(@NotNull JavaPlugin plugin) {
-        System.out.println("RegionAPI has been loaded by " + plugin.getName() + "!");
     }
 
 
