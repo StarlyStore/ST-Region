@@ -1,5 +1,6 @@
 package net.starly.region;
 
+import net.starly.core.bstats.Metrics;
 import net.starly.core.data.Config;
 import net.starly.core.data.MessageConfig;
 import net.starly.core.data.location.Region;
@@ -16,8 +17,8 @@ import java.io.File;
 import java.util.List;
 
 public class RegionMain extends JavaPlugin {
-
     public static String prefix = "§6[구역] ";
+
     @Override
     public void onEnable() {
         if (Bukkit.getPluginManager().getPlugin("ST-Core") == null) {
@@ -27,6 +28,10 @@ public class RegionMain extends JavaPlugin {
             return;
         }
 
+        new Metrics(this, 17293);
+
+
+        // CONFIG
         Config config = new Config("config", this);
         config.loadDefaultPluginConfig();
 
@@ -43,9 +48,13 @@ public class RegionMain extends JavaPlugin {
             RegionMapData.regionMap.put(file.getName().replace(".yml", ""), region);
         });
 
+
+        // EVENT LISTENER
         Bukkit.getPluginManager().registerEvents(new PlayerInteractListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerMoveListener(), this);
 
+
+        // COMMAND
         Bukkit.getPluginCommand("region").setExecutor(new RegionCmd());
         Bukkit.getPluginCommand("region").setTabCompleter(new RegionCmdTabComplete());
     }
