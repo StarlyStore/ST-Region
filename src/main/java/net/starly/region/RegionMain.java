@@ -55,8 +55,8 @@ public class RegionMain extends JavaPlugin {
 
 
         // COMMAND
-        Bukkit.getPluginCommand("region").setExecutor(new RegionCmd());
-        Bukkit.getPluginCommand("region").setTabCompleter(new RegionCmdTabComplete());
+        Bukkit.getPluginCommand("stregion").setExecutor(new RegionCmd());
+        Bukkit.getPluginCommand("stregion").setTabCompleter(new RegionCmdTabComplete());
     }
 
     @Override
