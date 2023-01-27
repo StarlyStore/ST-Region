@@ -10,17 +10,18 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import static net.starly.region.data.RegionMapData.regionMap;
 
 public class RegionAPI {
-    public RegionAPI(@NotNull JavaPlugin plugin) {
-    }
+    public RegionAPI() {}
+
+    @Deprecated
+    public RegionAPI(@NotNull JavaPlugin plugin) {}
 
 
     // -----------------------------[ REGION ]---------------------------- \\
-    @NotNull public void createRegion(@NotNull String name, @NotNull Location pos1, @NotNull Location pos2) {
+    public void createRegion(@NotNull String name, @NotNull Location pos1, @NotNull Location pos2) {
         regionMap.put(name, new Region(pos1, pos2));
     }
     @NotNull public Region getRegion(@NotNull String name) {
@@ -41,10 +42,10 @@ public class RegionAPI {
     public boolean contains(@NotNull String name, @NotNull Location location) {
         return getRegion(name) != null && getRegion(name).contains(location);
     }
-    public List<Player> getPlayersInRegion(@NotNull String name) {
+    @NotNull public List<Player> getPlayersInRegion(@NotNull String name) {
         return getPlayersInRegion(getRegion(name));
     }
-    public List<Player> getPlayersInRegion(@NotNull Region region) {
+    @NotNull public List<Player> getPlayersInRegion(@NotNull Region region) {
         List<Player> players = new ArrayList<>();
 
         region.getPos1().getWorld().getPlayers().forEach(player -> {
