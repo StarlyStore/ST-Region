@@ -14,6 +14,7 @@ import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.List;
 
 public class RegionMain extends JavaPlugin {
@@ -33,12 +34,11 @@ public class RegionMain extends JavaPlugin {
 
         // CONFIG
         Config config = new Config("config", this);
-        config.loadDefaultPluginConfig();
+        config.loadDefaultConfig();
 
-        File dataFolder = new File(this.getDataFolder(), "data");
-        if (!dataFolder.exists()) dataFolder.mkdirs();
 
-        List.of(dataFolder.listFiles()).forEach(file -> {
+        Config dataDir = new Config("data/", this);
+        dataDir.getFiles().forEach(file -> {
             Config regionData = new Config("data/" + file.getName().replace(".yml", ""), this);
             regionData.loadDefaultConfig();
 
@@ -69,7 +69,8 @@ public class RegionMain extends JavaPlugin {
             regionData.setLocation("pos2", region.getPos2());
         });
 
-        List.of(new File(this.getDataFolder(), "data").listFiles()).forEach(file -> {
+        Config dataDir = new Config("data/", this);
+        dataDir.getFiles().forEach(file -> {
             if (!RegionMapData.regionMap.containsKey(file.getName().replace(".yml", ""))) file.delete();
         });
     }

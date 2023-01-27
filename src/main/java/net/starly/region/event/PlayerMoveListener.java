@@ -94,7 +94,8 @@ public class PlayerMoveListener implements Listener {
 
     @EventHandler
     public void onVehicleMove(VehicleMoveEvent event) {
-        if (!(event.getVehicle().getPassenger() instanceof Player p)) return;
+        if (!(event.getVehicle().getPassenger() instanceof Player)) return;
+        Player player = (Player) event.getVehicle().getPassenger();
         Location from = event.getFrom();
         Location to = event.getTo();
 
@@ -104,8 +105,8 @@ public class PlayerMoveListener implements Listener {
                 RegionMapData.regionMap.keySet().forEach(key -> {
                     Region region = RegionMapData.regionMap.get(key);
 
-                    if (!region.contains(from) && region.contains(to)) Bukkit.getPluginManager().callEvent(new RegionEnterEvent(p, region, key));
-                    if (region.contains(from) && !region.contains(to)) Bukkit.getPluginManager().callEvent(new RegionLeaveEvent(p, region, key));
+                    if (!region.contains(from) && region.contains(to)) Bukkit.getPluginManager().callEvent(new RegionEnterEvent(player, region, key));
+                    if (region.contains(from) && !region.contains(to)) Bukkit.getPluginManager().callEvent(new RegionLeaveEvent(player, region, key));
                 });
             }
         }.run();

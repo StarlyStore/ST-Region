@@ -1,10 +1,10 @@
 name: ST-Region
 main: net.starly.region.RegionMain
 author: Starly Team
-website: https://discord.gg/TF8jqSJjCG
+website: http://starly.kr/discord
 
-version: 1.1
-api-version: 1.16
+version: 1.1.1
+api-version: 1.13
 
 softdepend:
   - ST-Core

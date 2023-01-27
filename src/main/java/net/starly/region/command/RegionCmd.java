@@ -15,11 +15,13 @@ public class RegionCmd implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args) {
-        if (!(sender instanceof Player player)) return true;
+        if (!(sender instanceof Player)) return true;
+        Player player = (Player) sender;
         if (args.length == 0) return false;
 
         switch (args[0]) {
-            case "생성", "create" -> {
+            case "생성":
+            case "create": {
                 if (args.length == 2) {
                     if (!RegionMapData.pos1Map.containsKey(player) || !RegionMapData.pos2Map.containsKey(player)) {
                         player.sendMessage(prefix + "§c좌표를 선택해주세요.");
@@ -45,7 +47,8 @@ public class RegionCmd implements CommandExecutor {
 
             }
 
-            case "제거", "remove" -> {
+            case "제거":
+            case "remove": {
                 if (args.length == 2) {
                     if (RegionMapData.regionMap.containsKey(args[1])) {
                         RegionMapData.regionMap.remove(args[1]);
@@ -63,7 +66,8 @@ public class RegionCmd implements CommandExecutor {
                 }
             }
 
-            case "목록", "list" -> {
+            case "목록":
+            case "list": {
                 if (args.length == 1) {
                     StringBuilder sb = new StringBuilder();
                     for (String key : RegionMapData.regionMap.keySet()) {
@@ -82,7 +86,7 @@ public class RegionCmd implements CommandExecutor {
                 }
             }
 
-            default -> {
+            default: {
                 player.sendMessage(prefix + "§c사용법: /region <생성|제거|목록>");
                 return true;
             }
