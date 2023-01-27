@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static net.starly.region.data.RegionMapData.regionMap;
 
@@ -26,7 +27,7 @@ public class RegionAPI {
         return regionMap.getOrDefault(name, null);
     }
     @NotNull public List<Region> getRegions() {
-        return regionMap.values().stream().toList();
+        return new ArrayList<>(regionMap.values());
     }
     @NotNull public Map<String, Region> getRegionMap() {
         return regionMap;
